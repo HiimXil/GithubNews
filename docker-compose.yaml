@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  githubnews:
+    image: githubnews
+    container_name: githubnews
+    restart: unless-stopped
+    environment:
