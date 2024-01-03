@@ -117,7 +117,8 @@ async function createGitHubReleaseEventStream(owner, repo, id, channelid, client
     const stream = new GitHubReleaseEventStream(owner, repo, id);
     stream.on('release', async event => {
         const channel = await client.channels.fetch(channelid);
-        const message = '# ' + repo + '\n ## ' + event.name + '\n [Go to the repo -->](' + event.html_url + ')';
+        repo = repo[0].toUpperCase() + repo.substring(1);
+        const message = '[' + repo + '](' + event.html_url + ')';
         channel.send({ content: message });
     });
     stream.start();
